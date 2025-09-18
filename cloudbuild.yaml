@@ -19,3 +19,6 @@ steps:
 
 images:
   - 'us-central1-docker.pkg.dev/intense-subject-470817-v2/genai-backend/backend:${COMMIT_SHA}'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
