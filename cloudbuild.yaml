@@ -1,12 +1,21 @@
 steps:
+  # Step 1: Build the Docker image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'us-central1-docker.pkg.dev/intense-subject-470817-v2/sample-deploy/backend:$COMMIT_SHA', './Backend']
+    args:
+      [
+        'build',
+        '-t',
+        'us-central1-docker.pkg.dev/intense-subject-470817-v2/genai-backend/backend:${COMMIT_SHA}',
+        './Backend'
+      ]
 
+  # Step 2: Push the image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/intense-subject-470817-v2/sample-deploy/backend:$COMMIT_SHA']
+    args:
+      [
+        'push',
+        'us-central1-docker.pkg.dev/intense-subject-470817-v2/genai-backend/backend:${COMMIT_SHA}'
+      ]
 
 images:
-  - 'us-central1-docker.pkg.dev/intense-subject-470817-v2/genai-backend/backend:$COMMIT_SHA'
-
-options:
-  logging: CLOUD_LOGGING_ONLY
+  - 'us-central1-docker.pkg.dev/intense-subject-470817-v2/genai-backend/backend:${COMMIT_SHA}'
