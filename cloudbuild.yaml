@@ -5,7 +5,7 @@ steps:
       [
         'build',
         '-t',
-        'us-central1-docker.pkg.dev/intense-subject-470817-v2/genai-backend/backend:${COMMIT_SHA}',
+        'us-central1-docker.pkg.dev/intense-subject-470817-v2/sample-deploy/backend:${COMMIT_SHA}',
         './Backend'
       ]
 
@@ -14,11 +14,11 @@ steps:
     args:
       [
         'push',
-        'us-central1-docker.pkg.dev/intense-subject-470817-v2/genai-backend/backend:${COMMIT_SHA}'
+        'us-central1-docker.pkg.dev/intense-subject-470817-v2/sample-deploy/backend:${COMMIT_SHA}'
       ]
 
 images:
-  - 'us-central1-docker.pkg.dev/intense-subject-470817-v2/genai-backend/backend:${COMMIT_SHA}'
+  - 'us-central1-docker.pkg.dev/intense-subject-470817-v2/sample-deploy/backend:${COMMIT_SHA}'
 
 options:
   logging: CLOUD_LOGGING_ONLY
