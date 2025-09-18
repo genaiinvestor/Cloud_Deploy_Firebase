@@ -1,29 +1,12 @@
 steps:
-  # Step 1: Build Docker image from Backend folder
-  - name: gcr.io/cloud-builders/docker
-    args: [
-      "build",
-      "-t", "us-central1-docker.pkg.dev/intense-subject-470817-v2/my-repo/startup-backend:$COMMIT_SHA",
-      "Backend"
-    ]
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'REGION-docker.pkg.dev/PROJECT_ID/REPO_NAME/backend:$COMMIT_SHA', './Backend']
 
-  # Step 2: Push image to Artifact Registry
-  - name: gcr.io/cloud-builders/docker
-    args: [
-      "push",
-      "us-central1-docker.pkg.dev/intense-subject-470817-v2/my-repo/startup-backend:$COMMIT_SHA"
-    ]
-
-  # Step 3 (optional): Deploy automatically to Cloud Run
-  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
-    entrypoint: gcloud
-    args: [
-      "run", "deploy", "startup-backend",
-      "--image", "us-central1-docker.pkg.dev/intense-subject-470817-v2/my-repo/startup-backend:$COMMIT_SHA",
-      "--region", "us-central1",
-      "--platform", "managed",
-      "--allow-unauthenticated"
-    ]
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'REGION-docker.pkg.dev/PROJECT_ID/REPO_NAME/backend:$COMMIT_SHA']
 
 images:
-  - "us-central1-docker.pkg.dev/intense-subject-470817-v2/my-repo/startup-backend:$COMMIT_SHA"
+  - 'REGION-docker.pkg.dev/PROJECT_ID/REPO_NAME/backend:$COMMIT_SHA'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
