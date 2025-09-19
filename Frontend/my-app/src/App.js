@@ -11,7 +11,7 @@ function App() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         startup_name: "Test Startup",
-        description: "AI platform for startup investors",
+        description: "AI platform : startup investors",
       }),
     });
     const data = await response.json();
