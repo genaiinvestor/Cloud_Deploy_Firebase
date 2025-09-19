@@ -17,6 +17,19 @@ steps:
         'us-central1-docker.pkg.dev/intense-subject-470817-v2/sample-deploy/backend:${COMMIT_SHA}'
       ]
 
+  # Step 3 : Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      [
+        'run', 'deploy', 'sample-backend',
+        '--image', 'us-central1-docker.pkg.dev/intense-subject-470817-v2/sample-deploy/backend:${COMMIT_SHA}',
+        '--region', 'us-central1',
+        '--platform', 'managed',
+        '--allow-unauthenticated'
+      ]
+
+
 images:
   - 'us-central1-docker.pkg.dev/intense-subject-470817-v2/sample-deploy/backend:${COMMIT_SHA}'
 

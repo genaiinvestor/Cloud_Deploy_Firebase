@@ -21,7 +21,7 @@ def root():
 @app.post("/evaluate")
 def evaluate_startup(data: dict):
     # Here you'd connect to Google ADK + Gemini
-    return {"evaluation": "Market size is large, AI-powered insights suggest strong growth."}
+    return {"evaluation": "Market size is small, AI-powered insights suggest weak growth."}
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8080)
