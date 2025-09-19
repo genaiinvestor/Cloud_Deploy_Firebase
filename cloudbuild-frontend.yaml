@@ -23,7 +23,7 @@ steps:
     args:
       [
         'run', 'deploy', 'frontend',
-        '--image', 'us-central1-docker.pkg.dev/intense-subject-470817-v2/sample-deploy/backend:${COMMIT_SHA}',
+        '--image', 'us-central1-docker.pkg.dev/intense-subject-470817-v2/sample-frontend/frontend:${COMMIT_SHA}',
         '--region', 'us-central1',
         '--platform', 'managed',
         '--allow-unauthenticated'
